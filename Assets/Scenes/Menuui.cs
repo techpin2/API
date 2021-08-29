@@ -61,4 +61,8 @@ public class Menuui : MonoBehaviour
         loginPanel.SetActive(false);
         homePanel.SetActive(false);
     }
+    private void Home()
+    {
+
+    }
 }

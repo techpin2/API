@@ -33,6 +33,10 @@ public class Login : MonoBehaviour
         {
             //home page
             Menuui.menuui.SwitchScreen("home");
+            HomePage.homepage.transform.GetChild(1).GetComponent<TMP_Text>().text = res.LoginResponse.NAME;
+            HomePage.homepage.transform.GetChild(2).GetComponent<TMP_Text>().text = res.LoginResponse.EMAIL;
+            HomePage.homepage.transform.GetChild(3).GetComponent<TMP_Text>().text = res.LoginResponse.PASSWORD;
+
         }
         else
         {
