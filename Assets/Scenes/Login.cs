@@ -10,7 +10,6 @@ public class Login : MonoBehaviour
 
     public void OnLoginButtonClick()
     {
-        string url = APIMANAGER.apiManager.GenrateUrl("login");
         LoginData lData = new LoginData();
         lData.email = emailId.text;
         lData.password = password.text;
@@ -18,7 +17,7 @@ public class Login : MonoBehaviour
        string jsonData= JsonUtility.ToJson(lData);
         print(jsonData);
 
-        APIMANAGER.apiManager.PostData(url, jsonData,LogincallBack);
+        APIMANAGER.apiManager.PostData(RequestType.Login, jsonData,LogincallBack);
         //APIMANAGER.apiManager.PostData(url, jsonData,(data)=> { 
         
         
@@ -33,9 +32,7 @@ public class Login : MonoBehaviour
         {
             //home page
             Menuui.menuui.SwitchScreen("home");
-            HomePage.homepage.transform.GetChild(1).GetComponent<TMP_Text>().text = res.LoginResponse.NAME;
-            HomePage.homepage.transform.GetChild(2).GetComponent<TMP_Text>().text = res.LoginResponse.EMAIL;
-            HomePage.homepage.transform.GetChild(3).GetComponent<TMP_Text>().text = res.LoginResponse.PASSWORD;
+            HomePage.homepage.PrintData(res);
 
         }
         else

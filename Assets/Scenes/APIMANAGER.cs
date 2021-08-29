@@ -18,34 +18,29 @@ public class APIMANAGER : MonoBehaviour
         apiManager = this;
     }
 
-    public string GenrateUrl(string subUrl)
+    private string GenrateUrl(RequestType type)
     {
         string completeUrl = "";
-        switch(subUrl)
+        switch(type)
         {
-            case "test":
+            case RequestType.Test:
                 completeUrl= serverUrl + test;
                 break;
-            case "login":
+            case RequestType.Login:
                 completeUrl = serverUrl + login;
                 break;
-            case "register":
+            case RequestType.Register:
                 completeUrl = serverUrl + register;
                 break;
         }
         return completeUrl;
     }
 
-    public void PostData(string url,string data, System.Action<string> callback)
+    public void PostData(RequestType type,string data, System.Action<string> callback)
     {
+        string url = GenrateUrl(type);
         StartCoroutine(Post(url, data,callback));
     }
-
-    public void GetData(string url)
-    {
-        StartCoroutine(Get(url));
-    }
-
 
     IEnumerator Post(string url, string data, System.Action<string> callback)
     {
@@ -67,22 +62,11 @@ public class APIMANAGER : MonoBehaviour
             }
         }
     }
+}
 
-    IEnumerator Get(string url)
-    {
-        using(UnityWebRequest www=UnityWebRequest.Get(url))
-        {
-            yield return www.SendWebRequest();
-
-            if (www.isHttpError || www.isNetworkError)
-            {
-                Debug.Log(www.error);
-            }
-            else
-            {
-                
-            }
-        }
-       
-    }
+public enum RequestType
+{
+    Test,
+    Login,
+    Register
 }

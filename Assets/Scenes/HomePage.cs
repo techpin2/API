@@ -15,4 +15,11 @@ public class HomePage : MonoBehaviour
     {
         homepage = this;
     }
+
+    public void PrintData(LoginRes response)
+    {
+        Name.text = "Name : " + response.LoginResponse.NAME;
+        email.text = "Email : " + response.LoginResponse.EMAIL;
+        password.text = "Password : " + response.LoginResponse.PASSWORD;
+    }
 }

@@ -11,14 +11,13 @@ public class Register : MonoBehaviour
 
     public void OnRegisterClick()
     {
-        string url = APIMANAGER.apiManager.GenrateUrl("register");
         RegisterData data = new RegisterData();
         data.name = name.text;
         data.email = emailId.text;
         data.password = password.text;
         string jsonData = JsonUtility.ToJson(data);
         print(jsonData);
-        APIMANAGER.apiManager.PostData(url, jsonData, OnRegisterResponse);
+        APIMANAGER.apiManager.PostData(RequestType.Register, jsonData, OnRegisterResponse);
     }
 
     private void OnRegisterResponse(string data)
