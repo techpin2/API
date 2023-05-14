@@ -2,13 +2,13 @@
 using System.Collections;
 using TMPro;
 
-public class Menuui : MonoBehaviour
+public class MenuUI : MonoBehaviour
 {
-    public static Menuui menuui;
+    public static MenuUI menuUi;
 
     private void Awake()
     {
-        menuui = this;
+        menuUi = this;
     }
 
     public GameObject registerPanel;

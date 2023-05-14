@@ -25,11 +25,11 @@ public class Register : MonoBehaviour
         Message m = JsonUtility.FromJson<Message>(data);
         if(m.message=="success")
         {
-            Menuui.menuui.SwitchScreen("login");
+            MenuUI.menuUi.SwitchScreen("login");
         }
         else
         {
-            Menuui.menuui.ShowError("Something Wrong !!");
+            MenuUI.menuUi.ShowError("Something Wrong !!");
         }
     }
 

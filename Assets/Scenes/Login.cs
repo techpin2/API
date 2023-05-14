@@ -31,20 +31,20 @@ public class Login : MonoBehaviour
         if(res.message== "success")
         {
             //home page
-            Menuui.menuui.SwitchScreen("home");
+            MenuUI.menuUi.SwitchScreen("home");
             HomePage.homepage.PrintData(res);
 
         }
         else
         {
-           Menuui.menuui.ShowError("invalid Email or Password");
+           MenuUI.menuUi.ShowError("invalid Email or Password");
         }
     }
 
 
     public void OnRegisterButtonClick()
     {
-        Menuui.menuui.SwitchScreen("register");
+        MenuUI.menuUi.SwitchScreen("register");
     }
 }
 
